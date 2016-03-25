@@ -1,0 +1,10 @@
+Ben Rbeh, Ben Rbeh,     true, 0, false, false, false, false, false, false, false, WASHING
+Ali, Ali,               true, 1, false, false, false, false, false, false, false, WORK_POST_3
+mongi, mongi,           true, 2, false, false, false, false, false, false, false, WORK_POST_1, WORK_POST_2, WORK_POST_3
+Chokri, Chokri,         false, -1, false, false, false, false, false, false, false, WORK_POST_1, WORK_POST_2, WORK_POST_3
+Belgacem, Belgacem,     false, -1, false, false, false, false, false, false, true, WORK_POST_1, WORK_POST_2, WORK_POST_3
+Noureddine, Noureddine, false, -1, false, false, false, false, false, false, true, WORK_POST_1, WORK_POST_2, WORK_POST_3
+Mansour, Mansour,       false, -1, false, false, false, false, false, false, true, WORK_POST_1, WORK_POST_2, WORK_POST_3, WASHING
+Abdallah, Abdallah,     false, -1, false, false, false, false, false, false, true, WORK_POST_1, WORK_POST_2, WORK_POST_3, WASHING
+Makram, Makram,         false, -1, false, false, false, false, false, false, true, WORK_POST_1, WORK_POST_2, WORK_POST_3, WASHING
+Foued, Foued,           false, -1, false, false, false, true,  true,  true,  true,  WORK_POST_1, WORK_POST_2, WORK_POST_3, WASHING
