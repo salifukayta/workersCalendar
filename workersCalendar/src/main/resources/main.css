@@ -1,0 +1,109 @@
+
+/* 
+ * Titles tables
+ */
+.title {
+	-fx-text-fill: linear-gradient(to bottom right, #7a5230, #a1856e, #7a5230);
+	-fx-label-padding: 5,5,5,5;
+	-fx-font-weight: bold;
+	-fx-font-family: "Tahoma"; 
+	-fx-font-size: 18; 
+}
+
+/* 
+ * Buttons style behavior
+ */
+.button {
+    -fx-background-color: linear-gradient(#1177ff 0%, #1188ff 25%, #1199ff 75%, #11aaff 100%);
+    -fx-background-insets: 1,1,1,1;
+    -fx-border-width: 0;
+    -fx-text-fill: #ffffff;
+	-fx-font-family: 'Helvetica Neue', sans-serif;
+	-fx-font-size: 15;
+}
+
+.button:focus,
+.button:hover {
+    -fx-background-color: #11ddff;
+    -fx-text-fill: #000000;
+}
+
+.button:pressed {
+    -fx-background-color: #11bbff;
+    -fx-text-fill: #000000;
+}
+
+/* 
+ * Not selectable table rows
+ */
+.workers-sorce .table-row-cell:filled:selected { 
+  -fx-background: -fx-control-inner-background ;
+  -fx-background-color: -fx-table-cell-border-color, -fx-background ;
+  -fx-background-insets: 0, 0 0 1 0 ;
+  -fx-table-cell-border-color: derive(-fx-color, 5%);
+}
+
+.workers-sorce .table-row-cell:odd:filled:selected {
+  -fx-background: -fx-control-inner-background-alt ;
+}
+
+/* 
+ * Do not show empty table and list cells
+ */
+.table-row-cell:empty , .row-header:empty{
+    -fx-background-color: white;
+}
+ 
+.table-row-cell:empty .table-cell, row-header:empty .table-cell {
+    -fx-border-width: 0px;
+}
+
+.list-cell:empty {
+    -fx-background-color: white;
+}
+
+/* 
+ * List selections and hover color
+ */
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: linear-gradient(#0077ff 0%, #0088ff 25%, #0099ff 75%, #00aaff 100%);
+    -fx-text-fill: white;
+}
+
+.list-cell:even {
+    -fx-background-color: white;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #00bbaa;
+    -fx-text-fill: white;
+}
+
+/* 
+ * Row header style
+ */
+.row-header {
+    -fx-background-color: -fx-body-color;
+    -fx-padding: 0;
+	
+    -fx-text-background-color: black;
+    -fx-text-fill: -fx-selection-bar-text;
+
+    -fx-size: 25;
+    -fx-border-style: solid;
+	-fx-font-weight: bold;
+    -fx-border-color: 
+        derive(-fx-base, 80%) 
+        linear-gradient(to bottom, derive(-fx-base,80%) 20%, derive(-fx-base,-10%) 90%)
+        derive(-fx-base, 10%) 
+        linear-gradient(to bottom, derive(-fx-base,80%) 20%, derive(-fx-base,-10%) 90%),
+
+        transparent -fx-table-header-border-color -fx-table-header-border-color transparent;
+    -fx-border-insets: 0 1 1 0, 0 0 0 0;
+    -fx-border-width: 0.083333em, 0.083333em;
+    
+    -fx-alignment: center;
+}
+
+
+
