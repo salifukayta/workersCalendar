@@ -10,8 +10,6 @@ public class WorkerDTO {
 
     private String firstName;
 
-    private Float hasFixedRestDay;
-
     private Integer id;
 
     private String lastName;
@@ -24,14 +22,6 @@ public class WorkerDTO {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public Float getHasFixedRestDay() {
-        return hasFixedRestDay;
-    }
-
-    public void setHasFixedRestDay(Float hasFixedRestDay) {
-        this.hasFixedRestDay = hasFixedRestDay;
     }
 
     public Integer getId() {

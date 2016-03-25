@@ -133,31 +133,14 @@ public class DayWorkModel {
 	 */
 	private boolean setAndCheckRestDay(WorkerModel worker, PossiblePostsEnum postToWorkerEnum) {
 		if (postToWorkerEnum.equals(PossiblePostsEnum.REST)) {
-			if (!worker.hasRested()) {
-				
-				if (worker.hasFixedRestDay() && worker.getRestDay() == -1) {
-					// Only one worker rest day for workers fixed rest day
-					for (WorkerModel restedWorker : posts.get(PossiblePostsEnum.REST)) {
-						if (restedWorker.hasFixedRestDay()) {
-							return false;
-						}
-					}
-					posts.get(postToWorkerEnum).add(worker);
-					worker.setRested(true);
-					worker.setRestDay(dayIndex);
-				} else if (worker.hasFixedRestDay() && (worker.getRestDay() == dayIndex)) {
-					posts.get(postToWorkerEnum).add(worker);
-					worker.setRested(true);
-					worker.setRestDay(dayIndex);
-				} else {
-					return false;
-				}
-				
+			if (!worker.hasRested() && worker.getRestDay() == dayIndex) {
+				posts.get(postToWorkerEnum).add(worker);
+				worker.setRested(true);
+				worker.setRestDay(dayIndex);
 			} else {
 				return false;
 			}
 		} else {
-
 			if (dayIndex == 0) {
 				System.out.println(worker.getFirstName() + " " + postToWorkerEnum);
 			}

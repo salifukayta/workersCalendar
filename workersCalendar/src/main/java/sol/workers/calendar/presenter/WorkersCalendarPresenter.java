@@ -17,7 +17,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.text.Text;
 import javafx.util.StringConverter;
@@ -45,16 +44,13 @@ public class WorkersCalendarPresenter extends AbstractPresenter implements Worke
 
 	private static final String PLACEHOLDER_TABLE_CALENDAR = "Aucun calendrier généré, Cliquer sur Générer calendrier herdomadaire "
 			+ "afin d'avoir le calendrier des ouvriers pour la semaine.";
-	private static final String DOUBLE_CLIC_SAISIR_PRENOM_OUVRIER = "Double clic pour saisir prénom ouvrier";
-	private static final String DOUBLE_CLIC_SAISIR_NOM_OUVRIER = "Double clic pour saisir nom ouvrier";
 
 	// TODO add a row factory to mark the new added workers
-	// TODO add the database model
-	// TODO mark something to notify the user that he has changed the data
+	// TODO mark something to notify the user that the data has been changed
 
 	// TODO save this data in the data base or else where
-	private static final int FIXED_CELL_HEIGHT_TABLE_WORKERS = 50;
-//	private static final int FIXED_CELL_HEIGHT_TABLE_WORKERS = 171;
+//	private static final int FIXED_CELL_HEIGHT_TABLE_WORKERS = 50;
+	private static final int FIXED_CELL_HEIGHT_TABLE_WORKERS = 171;
 	private static final int INSET_TABLE_HEIGHT = 27;
 
 	@Autowired
@@ -104,8 +100,6 @@ public class WorkersCalendarPresenter extends AbstractPresenter implements Worke
 	private TableColumn<WorkerModel, WorkerModel> columnVacations;
 	@FXML
 	private TableColumn<WorkerModel, WorkerModel> columnRestDay;
-	@FXML
-	private TableColumn<WorkerModel, Boolean> columnHasFixedRestDay;
 	@FXML
 	private TableColumn<WorkerModel, WorkerModel> columnPossiblesPosts;
 	@FXML
@@ -221,7 +215,7 @@ public class WorkersCalendarPresenter extends AbstractPresenter implements Worke
 	 * Initialise tableSourceWorker's columns
 	 */
 	private void initTableSourceWorkersColumns() {
-		columnFirstName.prefWidthProperty().bind(tableSourceWorker.widthProperty().divide(6).subtract(100 / 6));
+		columnFirstName.prefWidthProperty().bind(tableSourceWorker.widthProperty().divide(5).subtract(100 / 5));
 		columnFirstName.setCellValueFactory(cellData -> new SimpleObjectProperty<WorkerModel>(cellData.getValue()));
 		columnFirstName.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<WorkerModel>() {
 
@@ -244,7 +238,7 @@ public class WorkersCalendarPresenter extends AbstractPresenter implements Worke
 			}
 		}));
 
-		columnLastName.prefWidthProperty().bind(tableSourceWorker.widthProperty().divide(6).subtract(100 / 6));
+		columnLastName.prefWidthProperty().bind(tableSourceWorker.widthProperty().divide(5).subtract(100 / 5));
 		columnLastName.setCellValueFactory(cellData -> new SimpleObjectProperty<WorkerModel>(cellData.getValue()));
 		// DOUBLE_CLIC_SAISIR_NOM_OUVRIER
 		columnLastName.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<WorkerModel>() {
@@ -268,20 +262,15 @@ public class WorkersCalendarPresenter extends AbstractPresenter implements Worke
 			}
 		}));
 
-		columnVacations.prefWidthProperty().bind(tableSourceWorker.widthProperty().divide(6).subtract(100 / 6));
+		columnVacations.prefWidthProperty().bind(tableSourceWorker.widthProperty().divide(5).subtract(100 / 5));
 		columnVacations.setCellValueFactory(cellData -> new SimpleObjectProperty<WorkerModel>(cellData.getValue()));
 		columnVacations.setCellFactory(param -> new VacationsCell());
 
-		columnRestDay.prefWidthProperty().bind(tableSourceWorker.widthProperty().divide(6).subtract(100 / 6));
+		columnRestDay.prefWidthProperty().bind(tableSourceWorker.widthProperty().divide(5).subtract(100 / 5));
 		columnRestDay.setCellValueFactory(cellData -> new SimpleObjectProperty<WorkerModel>(cellData.getValue()));
 		columnRestDay.setCellFactory(param -> new RestDayCell());
 
-		columnHasFixedRestDay.prefWidthProperty().bind(tableSourceWorker.widthProperty().divide(6).subtract(100 / 6));
-		// columnHasFixedRestDay.setCellValueFactory(cellData -> cellData.getValue().GetFixedRestDayProperty());
-		columnHasFixedRestDay.setCellFactory(
-				CheckBoxTableCell.forTableColumn(index -> tableSourceWorker.getItems().get(index).getFixedRestDayProperty()));
-
-		columnPossiblesPosts.prefWidthProperty().bind(tableSourceWorker.widthProperty().divide(6).subtract(100 / 6 + 20));
+		columnPossiblesPosts.prefWidthProperty().bind(tableSourceWorker.widthProperty().divide(5).subtract(100 / 5 + 20));
 		columnPossiblesPosts.setCellValueFactory(cellData -> new SimpleObjectProperty<WorkerModel>(cellData.getValue()));
 		columnPossiblesPosts.setCellFactory(param -> new PossiblePostsCell());
 

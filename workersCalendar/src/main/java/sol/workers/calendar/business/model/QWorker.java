@@ -26,8 +26,6 @@ public class QWorker extends com.querydsl.sql.RelationalPathBase<QWorker> {
 
     public final StringPath firstName = createString("firstName");
 
-    public final NumberPath<Float> hasFixedRestDay = createNumber("hasFixedRestDay", Float.class);
-
     public final NumberPath<Integer> id = createNumber("id", Integer.class);
 
     public final StringPath lastName = createString("lastName");
@@ -62,10 +60,9 @@ public class QWorker extends com.querydsl.sql.RelationalPathBase<QWorker> {
 
     public void addMetadata() {
         addMetadata(firstName, ColumnMetadata.named("FIRST NAME").withIndex(1).ofType(Types.VARCHAR).withSize(2000000000).withDigits(10));
-        addMetadata(hasFixedRestDay, ColumnMetadata.named("HAS FIXED REST DAY").withIndex(3).ofType(Types.FLOAT).withSize(2000000000).withDigits(10));
         addMetadata(id, ColumnMetadata.named("ID").withIndex(0).ofType(Types.INTEGER).withSize(2000000000).withDigits(10));
         addMetadata(lastName, ColumnMetadata.named("LAST NAME").withIndex(2).ofType(Types.VARCHAR).withSize(2000000000).withDigits(10));
-        addMetadata(restDay, ColumnMetadata.named("REST DAY").withIndex(4).ofType(Types.INTEGER).withSize(2000000000).withDigits(10));
+        addMetadata(restDay, ColumnMetadata.named("REST DAY").withIndex(3).ofType(Types.INTEGER).withSize(2000000000).withDigits(10));
     }
 
 }

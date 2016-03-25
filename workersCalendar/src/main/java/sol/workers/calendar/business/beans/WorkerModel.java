@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.persistence.Entity;
 
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.value.ChangeListener;
 import sol.workers.calendar.business.PossiblePostsEnum;
 import sol.workers.calendar.business.model.WorkerDTO;
 
@@ -20,12 +18,10 @@ public class WorkerModel extends WorkerDTO {
 	private boolean rested;
 
 	private boolean deleted;
-	private SimpleBooleanProperty hasFixedDayProperty;
 	private PossiblePostsEnum currentPost = null;
-	private int nbDaysWorkedInCurrentPost = 0;
+	private int nbDaysWorkedInCurrentPost = 1;
 
 	public WorkerModel() {
-		setHasFixedRestDay(-1F);
 		setRestDay(-1);
 
 		this.deleted = false;
@@ -46,7 +42,6 @@ public class WorkerModel extends WorkerDTO {
 		setId(workerDTO.getId());
 		setFirstName(workerDTO.getFirstName());
 		setLastName(workerDTO.getLastName());
-		setHasFixedRestDay(workerDTO.getHasFixedRestDay());
 		setRestDay(workerDTO.getRestDay());
 
 		this.deleted = false;
@@ -62,7 +57,6 @@ public class WorkerModel extends WorkerDTO {
 
 		setFirstName(workerRow[0].trim());
 		setLastName(workerRow[1].trim());
-		setHasFixedRestDay((Boolean.valueOf(workerRow[2].trim())) ? 1F : 0F);
 		setRestDay(Integer.valueOf(workerRow[3].trim()));
 
 		rested = false;
@@ -79,20 +73,6 @@ public class WorkerModel extends WorkerDTO {
 		for (int i = 11; i < workerRow.length; i++) {
 			possiblesPosts.add(PossiblePostsEnum.valueOf(workerRow[i].trim()));
 		}
-	}
-
-	public boolean hasFixedRestDay() {
-		return getHasFixedRestDay() == 1;
-	}
-
-	public SimpleBooleanProperty getFixedRestDayProperty() {
-		if (hasFixedDayProperty == null) {
-			hasFixedDayProperty = new SimpleBooleanProperty(hasFixedRestDay());
-			hasFixedDayProperty.addListener((ChangeListener<Boolean>) (observable, oldValue, newValue) -> {
-				setHasFixedRestDay(newValue? 1F: 0F);
-			});
-		}
-		return hasFixedDayProperty;
 	}
 	
 	public boolean hasRested() {
@@ -162,7 +142,7 @@ public class WorkerModel extends WorkerDTO {
 			workerPlaced[i] = vacations[i];
 		}
 		rested = false;
-		nbDaysWorkedInCurrentPost = 0;
+		nbDaysWorkedInCurrentPost = 1;
 		currentPost = null;
 	}
 
